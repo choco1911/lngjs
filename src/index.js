@@ -1,23 +1,15 @@
-import React from 'react';
-import { render } from 'react-dom';
+import React from 'react'
+import { render } from 'react-dom'
+import Article from './Article'
+import {articles} from './fixtures'
 
-
-function HelloWorld() {
-    return <h1> Hello World </h1>
-}
-
-
-render( <HelloWorld /> , document.getElementById('container'))
+// any expression on js include to {}
+// except string
 
 /*
-<h1>Hello World</h1>
-
-React.createElement(
-    "h1",
-    null,
-    "Hello world"
-);
-
- React.createElement("HelloWorld", null)
-
+const article = articles[0]
+render( <Article article = {article} /> , document.getElementById('container'))
 */
+// render( <Article article = {articles[0]} foo = 'bar' /> , document.getElementById('container'))
+
+render( <Article article = {articles[0]} /> , document.getElementById('container'))
