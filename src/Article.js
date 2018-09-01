@@ -10,29 +10,29 @@ export default class Article extends Component {
             isOpen: false
         }
 
-        // use bind if toggleOpen is regular function
-        // this.toggleOpen = this.toggleOpen.bind(this)
     }
-
+    // Method
     render() {
         const {article} = this.props
         const {isOpen} = this.state
-        const section = isOpen ? <section> {article.text} </section> : null
         return ( <div>
                     <h3> {article.title} </h3>
-                    <button onClick = {this.toggleOpen}></button>
-                    {section}
+                    <button onClick = {this.toggleOpen}>
+                        {isOpen ? 'Close' : 'Open'}
+                    </button>
+                    {this.getSection()}
                 </div>
         )
     }
-/*
-    toggleOpen() {
-            this.setState({
-                    isOpen: !this.state.isOpen
-            })
+    // Method
+    getSection() {
+        if (!this.state.isOpen) {return null}
+        const {article} = this.props
+        return <section> {article.text} </section>
     }
-*/
-// is arrow function using Lexical Scope to find this - variable?
+
+    // Method
+    // is arrow function using Lexical Scope to find this - variable?
     toggleOpen = () => {
         this.setState({
             isOpen: !this.state.isOpen
