@@ -2,7 +2,6 @@ import React from 'react'
 import { render } from 'react-dom'
 import ArticleList from './ArticleList'
 import {articles} from './fixtures'
-
 // any expression on js include to {}
 // except string
 
