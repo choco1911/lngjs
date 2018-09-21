@@ -15,6 +15,7 @@ export default class Article extends Component {
     render() {
         const {article} = this.props
         const {isOpen} = this.state
+        console.log('--- rendering - isOpen', isOpen)
         return ( <div>
                     <h3> {article.title} </h3>
                     <button onClick = {this.toggleOpen}>
@@ -33,9 +34,13 @@ export default class Article extends Component {
 
     // Method
     // is arrow function using Lexical Scope to find this - variable?
-    toggleOpen = () => {
+    toggleOpen = (ev) => {
+        //console.log(ev)
+        ev.preventDefault()
+        ev.stopPropagation()
         this.setState({
             isOpen: !this.state.isOpen
         })
+        console.log('--- after setState - isOpen', this.state.isOpen)
     }
 }
