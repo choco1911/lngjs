@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
+import CommentsList from './CommentsList.js'
 
 export default class Article extends Component {
     //  let's create state
@@ -15,7 +16,6 @@ export default class Article extends Component {
     render() {
         const {article} = this.props
         const {isOpen} = this.state
-        console.log('--- rendering - isOpen', isOpen)
         return ( <div>
                     <h3> {article.title} </h3>
                     <button onClick = {this.toggleOpen}>
@@ -29,18 +29,22 @@ export default class Article extends Component {
     getSection() {
         if (!this.state.isOpen) {return null}
         const {article} = this.props
-        return <section> {article.text} </section>
+        return (<section>
+                    {article.text}
+                    <CommentsList comments={article.comments} />
+                 </section>
+             )
     }
 
     // Method
     // is arrow function using Lexical Scope to find this - variable?
     toggleOpen = (ev) => {
-        //console.log(ev)
+/* it didn't properly work in react (google why?!)
         ev.preventDefault()
         ev.stopPropagation()
+*/
         this.setState({
             isOpen: !this.state.isOpen
         })
-        console.log('--- after setState - isOpen', this.state.isOpen)
     }
 }
