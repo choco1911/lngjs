@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import CommentsList from './CommentsList.js'
+import toggleOpen from '../decorators/toggleOpen.js'
 
 
-export default class Article extends Component {
+class Article extends Component {
     // simple version of propTypes
     /*
         static propTypes = {
@@ -17,6 +18,9 @@ export default class Article extends Component {
               title: PropTypes.string.isRequired,
               text: PropTypes.string
            }).isRequired
+    }
+    state = {
+        isOpen: false
     }
 
     constructor(props) {
@@ -63,4 +67,7 @@ export default class Article extends Component {
             isOpen: !this.state.isOpen
         })
     }
+
 }
+
+export default toggleOpen(Article)
