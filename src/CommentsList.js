@@ -8,24 +8,24 @@ export default class CommentsList extends Component {
     }
 
     render () {
+        const buttonText = this.state.isCOpen ? 'Hide comments' : 'Show comments'
         return (
             <div>
-                <button onClick={this.toggleShow}>
-                {this.state.isCOpen ? 'Hide comments' : 'Show comments'}
-                </button>
+                <button onClick={this.toggleShow}>{buttonText}</button>
                 {this.showComment()}
             </div>
         )
     }
 
     showComment() {
-        if (!this.state.isCOpen) {return null}
+        if (!this.state.isCOpen) return null
+
         const {comments} = this.props
-        if (typeof comments === 'undefined') {return null}
-        const commentElements = comments.map(item => <li key={item.id}><Comment comment={item} /></li> )
+        //if (typeof comments === 'undefined') {return null}
+        if (!comments || !comments.length) return <p>No comments yet</p>
         return (
             <ul>
-                {commentElements}
+                {comments.map(comment => <li key={comment.id}><Comment comment={comment} /></li>)}
             </ul>
         )
 
