@@ -3,25 +3,16 @@ import Comment from './Comment.js'
 import toggleOpen from '../decorators/toggleOpen.js'
 
 
-class CommentsList extends Component {
-    // default props, so if props is undefined we can set default value
-    // so now we can do one check. if array is empty
-    static defaultProps = {
-            comments: []
-    }
+function CommentsList({comments = [], isOpen, toggleOpen}) {
+    const buttonText = isOpen ? 'Hide comments' : 'Show comments'
+    return (
+        <div>
+            <button onClick={toggleOpen}>{buttonText}</button>
+            {showComment({comments, isOpen})}
+        </div>
+    )
 
-    render () {
-        const buttonText = this.props.isOpen ? 'Hide comments' : 'Show comments'
-        return (
-            <div>
-                <button onClick={this.props.toggleOpen}>{buttonText}</button>
-                {this.showComment()}
-            </div>
-        )
-    }
-
-    showComment() {
-        const {comments, isOpen} = this.props
+function showComment({comments, isOpen}) {
         if (!isOpen) return null
         if (!comments.length) return <p>No comments yet</p>
         return (
