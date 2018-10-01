@@ -1,8 +1,24 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import CommentsList from './CommentsList.js'
 
+
 export default class Article extends Component {
-    //  let's create state
+    // simple version of propTypes
+    /*
+        static propTypes = {
+                article: PropTypes.object.isRequired
+        }
+    */
+    // more complex version
+    static propTypes = {
+           article: PropTypes.shape({
+              id: PropTypes.string.isRequired,
+              title: PropTypes.string.isRequired,
+              text: PropTypes.string
+           }).isRequired
+    }
+
     constructor(props) {
         // constructor of parent class
         super(props) // what for to pass props into super ?
