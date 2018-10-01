@@ -19,26 +19,12 @@ class Article extends Component {
               text: PropTypes.string
            }).isRequired
     }
-    state = {
-        isOpen: false
-    }
 
-    constructor(props) {
-        // constructor of parent class
-        super(props) // what for to pass props into super ?
-        // initial state of component
-        this.state = {
-            isOpen: false
-        }
-
-    }
-    // Method
     render() {
-        const {article} = this.props
-        const {isOpen} = this.state
+        const {article, isOpen, toggleOpen} = this.props
         return ( <div>
                     <h3> {article.title} </h3>
-                    <button onClick = {this.toggleOpen}>
+                    <button onClick = {toggleOpen}>
                         {isOpen ? 'Close' : 'Open'}
                     </button>
                     {this.getSection()}
@@ -47,8 +33,8 @@ class Article extends Component {
     }
     // Method
     getSection() {
-        if (!this.state.isOpen) {return null}
-        const {article} = this.props
+        const {article, isOpen} = this.props
+        if (!isOpen) return null
         return (<section>
                     {article.text}
                     <CommentsList comments={article.comments} />
@@ -58,16 +44,6 @@ class Article extends Component {
 
     // Method
     // is arrow function using Lexical Scope to find this - variable?
-    toggleOpen = (ev) => {
-/* it didn't properly work in react (google why?!)
-        ev.preventDefault()
-        ev.stopPropagation()
-*/
-        this.setState({
-            isOpen: !this.state.isOpen
-        })
-    }
-
 }
 
 export default toggleOpen(Article)
