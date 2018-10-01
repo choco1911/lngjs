@@ -35,11 +35,12 @@ class Article extends Component {
     getSection() {
         const {article, isOpen} = this.props
         if (!isOpen) return null
-        return (<section>
-                    {article.text}
-                    <CommentsList comments={article.comments} />
-                 </section>
-             )
+        return (
+            <section>
+                {article.text}
+                <CommentsList comments={article.comments} />
+            </section>
+        )
     }
 
     // Method
