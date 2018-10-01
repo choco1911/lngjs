@@ -3,6 +3,12 @@ import Comment from './Comment.js'
 
 
 export default class CommentsList extends Component {
+    // default props, so if props is undefined we can set default value
+    // so now we can do one check. if array is empty
+    static defaultProps = {
+            comments: []
+    }
+
     state = {
         isCOpen: false
     }
@@ -22,7 +28,7 @@ export default class CommentsList extends Component {
 
         const {comments} = this.props
         //if (typeof comments === 'undefined') {return null}
-        if (!comments || !comments.length) return <p>No comments yet</p>
+        if (!comments.length) return <p>No comments yet</p>
         return (
             <ul>
                 {comments.map(comment => <li key={comment.id}><Comment comment={comment} /></li>)}
