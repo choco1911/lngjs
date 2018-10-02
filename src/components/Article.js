@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import CommentsList from './CommentsList.js'
-import toggleOpen from '../decorators/toggleOpen.js'
+//import toggleOpen from '../decorators/toggleOpen.js'
 
 
 class Article extends Component {
@@ -52,4 +52,4 @@ class Article extends Component {
     // is arrow function using Lexical Scope to find this - variable?
 }
 
-export default toggleOpen(Article)
+export default Article
