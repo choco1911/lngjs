@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-import ArticleList from './components/ArticleList'
+import App from './components/App'
 import {articles} from './fixtures'
 // any expression on js include to {}
 // except string
@@ -11,4 +11,4 @@ render( <Article article = {article} /> , document.getElementById('container'))
 */
 // render( <Article article = {articles[0]} foo = 'bar' /> , document.getElementById('container'))
 
-render( <ArticleList articles = {articles} /> , document.getElementById('container'))
+render( <App articles = {articles} /> , document.getElementById('container'))
