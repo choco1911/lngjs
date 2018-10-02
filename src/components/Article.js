@@ -22,7 +22,8 @@ class Article extends Component {
 
     render() {
         const {article, isOpen, toggleOpen} = this.props
-        return ( <div>
+        return (
+                <div ref={this.setContainerRef}>
                     <h3> {article.title} </h3>
                     <button onClick = {toggleOpen}>
                         {isOpen ? 'Close' : 'Open'}
@@ -30,6 +31,10 @@ class Article extends Component {
                     {this.getSection()}
                 </div>
         )
+    }
+    setContainerRef = ref => {
+        this.container = ref
+        console.log('---', ref)
     }
     // Method
     getSection() {
