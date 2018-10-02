@@ -12,7 +12,7 @@ export default class ArticleList extends Component {
             <Article
                 article = {article}
                 isOpen = {article.id === this.state.openArticleId}
-                toggleOpen = {this.toggleOpenArticle.bind(this, article.id)}
+                toggleOpen = {this.toggleOpenArticle(article.id)}
             />
         </li> )
 
@@ -23,7 +23,7 @@ export default class ArticleList extends Component {
         )
     }
 
-    toggleOpenArticle(openArticleId) {
+    toggleOpenArticle = (openArticleId) => ev => {
         this.setState({ openArticleId })
     }
 }
